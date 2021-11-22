@@ -25,9 +25,17 @@ use App\Http\Controllers\InterfaceController;
 // });
 
     //ROTAS PROTEGIDAS PELO SANCTUM
-    Route::group(['middleware' => ['auth:sanctum']], function () {
-        Route::post('teste', [InterfaceController::class, 'verificaTeste']);
-    });
+    // Route::group(['middleware' => ['auth:sanctum']], function () {
+    //     Route::post('teste', [InterfaceController::class, 'verificaTeste']);
+    //     Route::post('teste', [InterfaceController::class, 'verificaTeste']);
+    //     Route::post('teste', [InterfaceController::class, 'verificaTeste']);
+    // });
 
-    //Route::post('teste', [InterfaceController::class, 'verificaTeste']);
+    Route::post('teste', [InterfaceController::class, 'verificaTeste']);
+    Route::post('login', [InterfaceController::class, 'login']);
+    Route::post('logout', [InterfaceController::class, 'logout']);
+    Route::post('cadastrar', [InterfaceController::class, 'store']);
+    Route::get('getMovies', [InterfaceController::class, 'getMovies']);
+    Route::get('getSeries', [InterfaceController::class, 'getSeries']);
+    Route::get('getDetalhes/{id}/{tipo}', [InterfaceController::class, 'show']);
     //Route::post('teste', 'InterfaceController@verificaTeste');

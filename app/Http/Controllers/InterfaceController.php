@@ -14,4 +14,33 @@ class InterfaceController extends Controller
             'message'=> "SHOW DE BOLA"
         ]);
     }
+
+    public function getDetalhes($id, $tipo){
+        
+        var_dump("TESTE");
+        return response()->json([
+            'status'=> 200,
+            'message'=> "SHOW DE BOLA"
+        ]);
+    }
+
+    public function getMovies(){
+        
+        var_dump("TESTE");
+        return response()->json([
+            'status'=> 200,
+            'message'=> "SHOW DE BOLA"
+        ]);
+    }
+
+    public function getSeries(){
+        
+        var_dump("TESTE");
+        return response()->json([
+            'status'=> 200,
+            'message'=> "SHOW DE BOLA"
+        ]);
+    }
+
+    
 }
