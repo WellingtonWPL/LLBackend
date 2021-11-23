@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Movie;
 use Illuminate\Http\Request;
+use App\Http\Utils\Response;
+use App\Models\Serie;
 
 class InterfaceController extends Controller
 {
@@ -26,20 +29,23 @@ class InterfaceController extends Controller
 
     public function getMovies(){
         
-        var_dump("TESTE");
-        return response()->json([
-            'status'=> 200,
-            'message'=> "SHOW DE BOLA"
-        ]);
+        $movies = Movie::all();
+        if($movies){
+            return Response::success('Sucesso', $movies);
+        }else{
+            return Response::faillure('Não foi possível encontrar os dados solicitados', null);
+        }
+        
     }
 
     public function getSeries(){
         
-        var_dump("TESTE");
-        return response()->json([
-            'status'=> 200,
-            'message'=> "SHOW DE BOLA"
-        ]);
+        $series = Serie::all();
+        if($series){
+            return Response::success('Sucesso', $series);
+        }else{
+            return Response::faillure('Não foi possível encontrar os dados solicitados', null);
+        }
     }
 
     
