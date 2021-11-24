@@ -37,5 +37,5 @@ use App\Http\Controllers\InterfaceController;
     Route::post('cadastrar', [InterfaceController::class, 'store']);
     Route::get('getMovies', [InterfaceController::class, 'getMovies']);
     Route::get('getSeries', [InterfaceController::class, 'getSeries']);
-    Route::get('getDetalhes/{id}/{tipo}', [InterfaceController::class, 'show']);
+    Route::get('getDetalhes/{tipo}/{id}', [InterfaceController::class, 'show']);
     //Route::post('teste', 'InterfaceController@verificaTeste');

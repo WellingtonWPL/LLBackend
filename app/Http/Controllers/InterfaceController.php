@@ -18,18 +18,31 @@ class InterfaceController extends Controller
         ]);
     }
 
-    public function getDetalhes($id, $tipo){
+    public function show($tipo, $id){
+        if($tipo == 'MOVIE'){
+            $movie = Movie::find($id);
+            if($movie){
+                return Response::success('Sucesso', $movie);
+            }else{
+                return Response::faillure('Não foi possível encontrar os dados solicitados', null);
+            }
+        }else if($tipo == 'SERIE'){
+            $serie = Serie::find($id);
+            if($serie){
+                return Response::success('Sucesso', $serie);
+            }else{
+                return Response::faillure('Não foi possível encontrar os dados solicitados', null);
+            } 
+        }else{
+            return Response::faillure('Não foi possível encontrar os dados solicitados', null);
+        }
         
-        var_dump("TESTE");
-        return response()->json([
-            'status'=> 200,
-            'message'=> "SHOW DE BOLA"
-        ]);
+        
     }
 
     public function getMovies(){
         
-        $movies = Movie::all();
+        $movies = Movie::select('id')->get();
         if($movies){
             return Response::success('Sucesso', $movies);
         }else{
@@ -40,7 +53,7 @@ class InterfaceController extends Controller
 
     public function getSeries(){
         
-        $series = Serie::all();
+        $series = Serie::select('id')->get();
         if($series){
             return Response::success('Sucesso', $series);
         }else{

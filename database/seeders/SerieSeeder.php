@@ -39,7 +39,7 @@ class SerieSeeder extends Seeder
                 'nome' => 'The Outsider',
                 'titulo' => 'The Outsider',
                 'ano' => 2020,
-                'categorias' => 'Crime, Drama, Fantasiaepisodios',
+                'categorias' => 'Crime, Drama, Fantasia',
                 'episodios' => 10,
                 'temporadas' => 1,
                 'sinopse' => 'Os investigadores ficam confusos com um crime indescritível que foi cometido.',
