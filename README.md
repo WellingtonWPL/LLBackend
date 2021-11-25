@@ -31,15 +31,17 @@ considerando necessário as seguintes versões:
     <li>Composer V2</li>
     <li>PHP V8.0</li>
     <li>MySQL V8</li>
-<ul>
- Após a conclusão é preciso configurar o arquivo .env, para isso realize uma cópia do modelo .env.example e preencha os dados referente ao banco de dados MySQL 8. Também é necessário inserir o campo SESSION_DOMAIN=localhost ou ambiente de execução.
+</ul>
+Após a conclusão é preciso configurar o arquivo .env, para isso realize uma cópia do modelo .env.example e preencha os dados referente ao banco de dados MySQL 8. Também é necessário inserir o campo SESSION_DOMAIN=localhost ou ambiente de execução.
 
 ## Comandos
 
 Após o arquivo .env devidamente configurado é necessário rodar os seguintes comandos no terminal dentro da pasta onde o repositório foi clonado:
-<code>php artisan key:generate</code>
-<code>php artisan migrate</code>
-<code>php artisan db:seed</code>
+<ul>
+    <code>php artisan key:generate</code>
+    <code>php artisan migrate</code>
+    <code>php artisan db:seed</code> 
+</ul>
 
 E Pronto o Backend da aplicação está pronto para rodar.
 ## Autor
