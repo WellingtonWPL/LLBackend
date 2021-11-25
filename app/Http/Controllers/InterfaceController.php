@@ -9,15 +9,7 @@ use App\Models\Serie;
 
 class InterfaceController extends Controller
 {
-    public function verificaTeste(Request $request){
-        
-        var_dump($request->all());
-        return response()->json([
-            'status'=> 200,
-            'message'=> "SHOW DE BOLA"
-        ]);
-    }
-
+   
     public function show($tipo, $id){
         if($tipo == 'MOVIE'){
             $movie = Movie::find($id);
@@ -38,6 +30,31 @@ class InterfaceController extends Controller
         }
         
         
+    }
+
+    public function search($criterio = ''){
+        $movieName = Movie::select('id')->where('nome', 'like', '%' . $criterio . '%');
+        $movieTille = Movie::select('id')->where('titulo', 'like', '%' . $criterio . '%');
+        $movieActors = Movie::select('id')->where('elenco', 'like', '%' . $criterio . '%');
+        $movies = Movie::select('id')->where('diretor', 'like', '%' . $criterio . '%')
+                        ->union($movieActors)
+                        ->union($movieTille)
+                        ->union($movieName)
+                        ->get();
+        $serieName = Serie::select('id')->where('nome', 'like', '%' . $criterio . '%');
+        $serieTille = Serie::select('id')->where('titulo', 'like', '%' . $criterio . '%');
+        $serieActors = Serie::select('id')->where('elenco', 'like', '%' . $criterio . '%');
+        $series = Serie::select('id')->where('criador', 'like', '%' . $criterio . '%')
+                        ->union($serieActors)
+                        ->union($serieTille)
+                        ->union($serieName)
+                        ->get();
+        $result = [
+            'series' => $series,
+            'movies' => $movies
+        ];
+
+        return Response::success('Sucesso', $result);
     }
 
     public function getMovies(){

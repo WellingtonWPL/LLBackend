@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InterfaceController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,27 +16,18 @@ use App\Http\Controllers\InterfaceController;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
 
-
-// Route::post('teste', function (Request $request) {
-//     return response()->json(["TESTE"]);
-// });
 
     //ROTAS PROTEGIDAS PELO SANCTUM
-    // Route::group(['middleware' => ['auth:sanctum']], function () {
-    //     Route::post('teste', [InterfaceController::class, 'verificaTeste']);
-    //     Route::post('teste', [InterfaceController::class, 'verificaTeste']);
-    //     Route::post('teste', [InterfaceController::class, 'verificaTeste']);
-    // });
+    Route::group(['middleware' => ['auth:sanctum']], function () {
+        Route::get('getMovies', [InterfaceController::class, 'getMovies']);
+        Route::get('getSeries', [InterfaceController::class, 'getSeries']);
+        Route::get('getDetalhes/{tipo}/{id}', [InterfaceController::class, 'show']);
+        Route::get('search/{busca?}', [InterfaceController::class, 'search']);
+        Route::post('logout', [AuthController::class, 'logout']);
+    });
 
-    Route::post('teste', [InterfaceController::class, 'verificaTeste']);
-    Route::post('login', [InterfaceController::class, 'login']);
-    Route::post('logout', [InterfaceController::class, 'logout']);
-    Route::post('cadastrar', [InterfaceController::class, 'store']);
-    Route::get('getMovies', [InterfaceController::class, 'getMovies']);
-    Route::get('getSeries', [InterfaceController::class, 'getSeries']);
-    Route::get('getDetalhes/{tipo}/{id}', [InterfaceController::class, 'show']);
-    //Route::post('teste', 'InterfaceController@verificaTeste');
+    Route::post('register', [AuthController::class, 'register']);
+    Route::post('login', [AuthController::class, 'login']);
+    
+
